@@ -90,7 +90,6 @@ class Store {
 }
 
 // Testing & Execution System
-
 function runStoreSystem() {
   // Initialize store instance
   const store = new Store();
