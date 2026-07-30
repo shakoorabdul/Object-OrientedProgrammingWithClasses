@@ -19,7 +19,7 @@ class Product {
   }
 
   /**
-   * Generates a formatted summary of the product.
+   * Generates a summary of the product.
    */
   toString() {
     return `Product: ${this.name}, Price: $${this.price.toFixed(2)}, Quantity: ${this.quantity}`;
