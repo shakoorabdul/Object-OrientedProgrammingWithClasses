@@ -72,7 +72,7 @@ class Store {
   }
 
   /**
-   * Sums the total value of all items in inventory.
+   * Sums the total value of all items.
    */
   getInventoryValue() {
     return this.inventory.reduce((total, item) => total + item.getTotalValue(), 0);
