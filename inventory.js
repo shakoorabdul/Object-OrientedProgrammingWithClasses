@@ -12,7 +12,7 @@ class Product {
   }
 
   /**
-   * Calculates total monetary value of current product stock.
+   * Calculates total value of current product stock.
    */
   getTotalValue() {
     return this.price * this.quantity;
