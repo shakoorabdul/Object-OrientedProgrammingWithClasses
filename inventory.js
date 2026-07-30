@@ -4,9 +4,6 @@
 class Product {
   /**
    * Initializes basic product properties.
-   * @param {string} name - The product name.
-   * @param {number} price - Unit price.
-   * @param {number} quantity - Quantity available.
    */
   constructor(name, price, quantity) {
     this.name = name;
@@ -16,7 +13,6 @@ class Product {
 
   /**
    * Calculates total monetary value of current product stock.
-   * @returns {number} Value of stock (price * quantity).
    */
   getTotalValue() {
     return this.price * this.quantity;
