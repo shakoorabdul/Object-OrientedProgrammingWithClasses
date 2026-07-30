@@ -26,7 +26,7 @@ class Product {
   }
 
   /**
-   * Static Method
+   * Applying discount
    */
   static applyDiscount(products, discount) {
     products.forEach((product) => {
