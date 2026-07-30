@@ -79,7 +79,7 @@ class Store {
   }
 
   /**
-   * Finds a product by its name (case-insensitive).
+   * Finds a product by its name.
    */
   findProductByName(name) {
     const found = this.inventory.find(
