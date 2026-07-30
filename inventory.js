@@ -1,5 +1,5 @@
 /**
- * Stores general product information and provides baseline methods.
+ * Stores product information and provides baseline.
  */
 class Product {
   /**
