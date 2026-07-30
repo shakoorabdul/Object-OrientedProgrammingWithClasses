@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory Management System</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    h1 {
+      border-bottom: 3px solid #0284c7;
+      padding-bottom: 8px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .metric {
+      font-size: 1.1rem;
+      margin: 8px 0;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #0369a1;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background-color: #f1f5f9;
+      margin-bottom: 8px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border-left: 4px solid #0284c7;
+    }
+    li.perishable {
+      border-left-color: #e11d48;
+    }
+    code {
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Inventory Management Dashboard</h1>
+
+  <div class="card">
+    <h2>Financial Overview</h2>
+    <p class="metric">Initial Total Value: <span id="initial-val" class="highlight"></span></p>
+    <p class="metric">Value After 15% Discount: <span id="discounted-val" class="highlight"></span></p>
+  </div>
+
+  <div class="card">
+    <h2>Inventory List</h2>
+    <ul id="product-list"></ul>
+  </div>
+
+  <div class="card">
+    <h2>Search Verification</h2>
+    <p>Target Name: <code id="search-target"></code></p>
+    <p>Result: <span id="search-result" class="highlight"></span></p>
+  </div>
+
+  <!-- Include JavaScript logic -->
+  <script src="inventory.js"></script>
+
+  <!-- Render system results to the webpage DOM -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Access values returned from running runStoreSystem() in inventory.js
+      const { store, initialValue, discountedValue, searchedProduct, searchName } = systemData;
+
+      // Render Totals
+      document.getElementById("initial-val").textContent = `$${initialValue.toFixed(2)}`;
+      document.getElementById("discounted-val").textContent = `$${discountedValue.toFixed(2)}`;
+
+      // Render Product List
+      const listContainer = document.getElementById("product-list");
+      store.inventory.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item.toString();
+        if (item instanceof PerishableProduct) {
+          li.classList.add("perishable");
+        }
+        listContainer.appendChild(li);
+      });
+
+      // Render Search Output
+      document.getElementById("search-target").textContent = searchName;
+      document.getElementById("search-result").textContent = searchedProduct 
+        ? searchedProduct.toString() 
+        : "Product Not Found";
+    });
+  </script>
+</body>
+</html>
